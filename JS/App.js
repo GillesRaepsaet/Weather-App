@@ -14,15 +14,28 @@ const AppWeather = {
 
         console.log(name,icon,description,temp, humidity,speed)
 
-        document.getElementById('city').innerHTML ="Weather " + name
+        document.getElementById('city').innerText ="Weather of  " + name
         document.getElementById('icons').src = "https://openweathermap.org/img/wn/" + icon + ".png"
+        document.querySelector('.description').innerText = description
+        document.getElementById('weatherDegrees').innerText = temp + " °C"
+        document.getElementById('weatherHumidity').innerText = "humidity: " +humidity+ "%"  
+        document.getElementById('weatherWind').innerText = "wind speed: " + speed+ "km/h" 
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/random/?" + name + "')"
+        
+    },
+    containerSearch: function(){
+       this.fetchWeather(document.querySelector('#Search-Input').value)
     }
 
 }
 
+document.querySelector('#containerSearch button')
+addEventListener('click', function() {
+    AppWeather.containerSearch()
+})
 
-const button = document.querySelector('button')
-
-button.addEventListener('click', () =>{
-    
-})  
+document.querySelector('#Search-Input').addEventListener('keyup', function(event) {
+    if(event.key == "Enter"){
+        AppWeather.containerSearch()
+    }
+})
