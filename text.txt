@@ -1,0 +1,17 @@
+ containerSearch: function(){ 
+       this.fetchWeather(document.querySelector('#Search-Input').value)
+    }
+
+},
+
+document.querySelector('#searchBtn')
+.addEventListener('click', function() {
+    console.log('la')
+    AppWeather.containerSearch()
+})
+
+document.querySelector('#Search-Input').addEventListener('keyup', function(event) {
+    if(event.key == "Enter"){
+        AppWeather.containerSearch()
+    }
+ })
